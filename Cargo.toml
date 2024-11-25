@@ -1,6 +1,18 @@
 [package]
 name = "pherrous"
-version = "0.1.0"
+description = "Integrate PHP with your Rust application, or integrate Rust with your PHP application."
+authors = [
+    "Ryan Chandler <support@ryangjchandler.co.uk>"
+]
 edition = "2021"
 
-[dependencies]
+[workspace]
+resolver = "2"
+members = [
+    "crates/*"
+]
+package.authors = [
+    "Ryan Chandler <support@ryangjchandler.co.uk>"
+]
+package.version = "0.1.0"
+package.edition = "2021"

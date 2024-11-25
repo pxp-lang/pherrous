@@ -1,0 +1,8 @@
+[package]
+name = "pherrous-sys"
+description = "Low-level bindings to PHP's C API."
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]
