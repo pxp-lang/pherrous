@@ -8,9 +8,14 @@ edition.workspace = true
 [dependencies]
 
 [features]
-default = []
+default = ["php83"]
 embed = []
+zts = []
+php83 = []
+php84 = []
 
 [build-dependencies]
 anyhow = "1.0.93"
+bindgen = "0.70.1"
+cc = "1.2.1"
 which = "7.0.0"
