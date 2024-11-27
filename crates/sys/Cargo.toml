@@ -6,3 +6,11 @@ authors.workspace = true
 edition.workspace = true
 
 [dependencies]
+
+[features]
+default = []
+embed = []
+
+[build-dependencies]
+anyhow = "1.0.93"
+which = "7.0.0"
