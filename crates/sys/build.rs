@@ -10,9 +10,13 @@ fn main() -> Result<()> {
 
     check_conflicting_features()?;
 
+    eprintln!("Downloading SPC...");
     let spc = download_spc()?.display().to_string();
 
+    eprintln!("Downloading SPC sources...");
     download_spc_sources(&spc)?;
+
+    eprintln!("Building SPC...");
     build_spc(&spc)?;
 
     Ok(())
@@ -60,6 +64,7 @@ fn build_spc(spc: &str) -> Result<()> {
     let mut arguments = Vec::from([
         "build",
         DEFAULT_EXTENSIONS,
+        "--debug",
         "--build-cli",
     ]);
 
@@ -132,7 +137,7 @@ fn exec(cmd: &str, args: &[&str], cwd: &Path) -> Result<String> {
         .output()?;
 
     if !output.status.success() {
-        return Err(anyhow::anyhow!("Failed to execute command: {}", String::from_utf8_lossy(&output.stderr)));
+        return Err(anyhow::anyhow!("Failed to execute command: {}\n{}", String::from_utf8_lossy(&output.stderr), String::from_utf8_lossy(&output.stdout)));
     }
 
     Ok(String::from_utf8_lossy(&output.stdout).to_string())
